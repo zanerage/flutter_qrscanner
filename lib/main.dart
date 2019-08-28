@@ -10,58 +10,56 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  GlobalKey qrKey = GlobalKey();
+  var qrText = "";
   QRViewController controller;
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey qrKey = GlobalKey();
-    var qrText = "";
-    QRViewController controller;
-
     @override
     Widget build(BuildContext context) {
       // TODO: implement build
       return Scaffold(
         body: Column
           (children: <Widget>[
-        Expanded(
-          flex: 5,
-          child: QRView(key: qrKey,
-              overlay: QrScannerOverlayShape(
-                borderRadius: 10,
-                borderColor: Colors.red,
-                borderLength: 30,
-                borderWidth: 10,
-                cutOutSize: 300),
-              onQRViewCreated:_onQRViewCreate),
-        ),
-        Expanded(
-          flex: 1,
-          child: Center(
-            child: Text('Scan result:$qrText'),
+          Expanded(
+            flex: 5,
+            child: QRView(key: qrKey,
+                overlay: QrScannerOverlayShape(
+                    borderRadius: 10,
+                    borderColor: Colors.red,
+                    borderLength: 30,
+                    borderWidth: 10,
+                    cutOutSize: 300),
+                onQRViewCreated: _onQRViewCreate),
           ),
-        )
-      ],),);
-    }
-    @override
-    void dispose() {
-      controller?.dispose();
-      super.dispose();
-
-    }
-    void _onQRViewCreate(QRViewController controller) {
-      this.controller = controller;
-      controller.scannedDataStream.listen((scanData){
-        setState(() {
-          qrText = scanData;
-        });
-      });
-
-      }
-
-
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: Text('Scan result:$qrText'),
+            ),
+          )
+        ],),);
     }
   }
+
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  void _onQRViewCreate(QRViewController controller) {
+    this.controller = controller;
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        qrText = scanData;
+      });
+    });
+  }
+
+}
 
 
 

@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
                 borderLength: 30,
                 borderWidth: 10,
                 cutOutSize: 300),
-              onQRViewCreated: _onQRViewCreate),
+              onQRViewCreated:_onQRViewCreate),
         ),
         Expanded(
           flex: 1,

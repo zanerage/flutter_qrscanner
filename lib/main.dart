@@ -13,11 +13,9 @@ class _MyAppState extends State<MyApp> {
   GlobalKey qrKey = GlobalKey();
   var qrText = "";
   QRViewController controller;
-
   @override
   Widget build(BuildContext context) {
-    @override
-    Widget build(BuildContext context) {
+
       // TODO: implement build
       return Scaffold(
         body: Column
@@ -41,7 +39,7 @@ class _MyAppState extends State<MyApp> {
           )
         ],),);
     }
-  }
+
 
 
   @override

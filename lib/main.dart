@@ -24,10 +24,10 @@ class _MyAppState extends State<MyApp> {
             flex: 5,
             child: QRView(key: qrKey,
                 overlay: QrScannerOverlayShape(
-                    borderRadius: 10,
+                    borderRadius: 9,
                     borderColor: Colors.red,
                     borderLength: 30,
-                    borderWidth: 10,
+                    borderWidth: 9,
                     cutOutSize: 300),
                 onQRViewCreated: _onQRViewCreate),
           ),
